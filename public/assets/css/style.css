@@ -27,11 +27,11 @@ h1 {
     min-width: 700px;
 }
 
-#home_button {
+.home_button {
     text-decoration: none!important;
-    background-color: #ebae77;
-    font-weight:bold ;  
-    color: #323232;
+    background-color: #ebae77!important;
+    color: #323232!important;
+    height: 200px;
 }
 
 form {
@@ -39,14 +39,9 @@ form {
     max-width: 800px;
 }
 
-.gall {
+.card-gallery {
     background-color: #212529;
-    
-}
-
-.galleryadmin {
-    min-height: 180px;
-    max-height: 220px;
+    height: 300px;
 }
 
 .badge{
@@ -148,10 +143,29 @@ font-size: small;
     background-color: #242424!important;
 }
 
-.custom-checkbox[checked="checked"] {
+.custom-checkbox:checked {
     text-align: center;
     width: 2rem ;
     height: 2rem;
     background-color: #ebae77!important;
-   
+}
+
+hr {
+    margin: 0.5rem 0;
+}
+
+.stars {
+    font-size: 2rem; 
+    color:#ebae77;
+}
+
+.container-img {
+    width: 100%;
+    overflow: hidden;
+    max-height:300px;
+    background: black;
+}
+
+.container-img > img {
+    height: 100%;
 }

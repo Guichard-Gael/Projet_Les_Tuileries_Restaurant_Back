@@ -15,12 +15,12 @@ use Symfony\Component\Routing\Annotation\Route;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @Route("/event")
+ * @Route("/admin/event")
  */
 class EventController extends AbstractController
 {
     /**
-     * @Route("/admin/news", name="app_event_index", methods={"GET"})
+     * @Route("/", name="app_event_index", methods={"GET"})
      */
     public function index(NewsRepository $newsRepository): Response
     {

@@ -1,17 +1,22 @@
 {% extends 'backoffice.html.twig' %}
 
-{% block title %}Ajouter une New{% endblock %}
+{% block title %}Ajouter une publication{% endblock %}
 
 {% block main %}
-    <h1>Ajouter une New ou Événement</h1>
+    <h1>Ajouter une publication</h1>
 
     {% include '_flash_messages.html.twig' %}
     
     {{ include('event/_form.html.twig') }}
 
     {% for picture in news.pictures %}
-{% dump(picture.id) %}
-        {{ include ('event/_delete_picture_event_form.html.twig') }}   
+        {% if is_granted('ROLE_ADMIN') %}
+            {{ include ('event/_delete_picture_event_form.html.twig') }}   
+        {% else %}
+            <div>
+                <a class ="btn btn-secondary my-2" href="">Bouton de suppression de l'image désactivé</a>
+            </div>
+        {% endif %}
     {% endfor %}
     <a class="btn btn-primary my-3"href="{{ path('app_event_index') }}">Retourner à la liste des publications</a>
 {% endblock %}

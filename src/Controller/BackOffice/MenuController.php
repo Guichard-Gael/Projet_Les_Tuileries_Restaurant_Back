@@ -25,7 +25,11 @@ class MenuController extends AbstractController
     public function uploadPdfmenu(File $fileService, Request $request, ZamzarApi $zamzarApi)
     {
         $form = $this->createFormBuilder()
-            ->add('pdf', FileType::class)
+            ->add('pdf', FileType::class, [
+                'attr' => [
+                    'class' => 'rounded mb-3'
+                ]
+            ])
             
             ->getForm();
 

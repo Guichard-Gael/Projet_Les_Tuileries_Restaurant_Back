@@ -111,12 +111,12 @@ class UserController extends AbstractController
     public function fakeAdmin(UserPasswordHasherInterface $passwordHasher, ManagerRegistry $managerRegistry): JsonResponse
     {
         $admin = new User();
-        $admin->setEmail("admin@admin.com")
-              ->setFirstname("admin")
-              ->setLastname("admin")
+        $admin->setEmail("test@test.com")
+              ->setFirstname("test")
+              ->setLastname("test")
               ->setPhone("02000000")
-              ->setPassword("admin")
-              ->setRoles(["ROLE_ADMIN"]);
+              ->setPassword("test")
+              ->setRoles(["ROLE_TEST"]);
 
         $em = $managerRegistry->getManager();
         // Hash the password

@@ -17,14 +17,15 @@ class PopUpType extends AbstractType
             ->add('title', TextType::class, [
                 'label' => 'Titre de la pop-up',
                 'attr' => [
-                    'class' => 'custom-title',
-                ],
+                    'class' => 'rounded'
+                ]
             ])
             ->add('content', TextareaType::class, [
                 'label' => 'Contenu de la pop-up',
                 'attr' => [
-                    'class' => 'custom-content',
-            ]])
+                    'class' => 'rounded'
+                ]
+            ])
         ;
     }
 

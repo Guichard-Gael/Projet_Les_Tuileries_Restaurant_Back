@@ -47,7 +47,12 @@ security:
         - { path: ^/api/sign-in,       roles: PUBLIC_ACCESS }
         - { path: ^/api/client-space,       roles: IS_AUTHENTICATED_FULLY }
         - { path: ^/admin/login, roles: PUBLIC_ACCESS }
+        - { path: ^/admin/card/search, roles: ROLE_TEST,  methods: [POST] }
+        - { path: ^/admin, roles: ROLE_TEST,  methods: [GET] }
         - { path: ^/admin, roles: ROLE_ADMIN }
+
+    role_hierarchy:
+        ROLE_ADMIN: ROLE_TEST
 
 
 when@test:

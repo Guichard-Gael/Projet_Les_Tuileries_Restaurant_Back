@@ -18,11 +18,14 @@ class PictureType extends AbstractType
             ->add('path', FileType::class,[
                 'label' => 'Ajout d\'image',
                 'attr' => [
-                    'class' => 'form-control'
+                    'class' => 'rounded'
                 ]
             ])
             ->add('alt', TextType::class, [
-                'label' => 'alt'
+                'label' => 'alt',
+                'attr' => [
+                    'class' => 'rounded'
+                ]
             ])
         
 

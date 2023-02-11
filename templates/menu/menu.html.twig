@@ -9,19 +9,20 @@
     {% include '_flash_messages.html.twig' %}
 
     <div class="mb-3 mx-5 contentpdf">
-    {{ form_start(form) }}
-        <div class="my-custom-class-for-errors">
-            {{ form_errors(form) }}
-        </div>
-
-        <div class="row">
-            <div class="form-control ">
+        {{ form_start(form) }}
+            <div class="my-custom-class-for-errors">
+                {{ form_errors(form) }}
+            </div>
+            <div class="row">
                 {{form_widget(form.pdf)  }}
-            </div>  
-        </div>
-        <button class="btn btn-success btn-block mt-3">{{ button_label|default('Ajouter') }}
-        </button>
-    {{ form_end(form) }}
+            </div>
+            {% if is_granted('ROLE_ADMIN') %}
+                <button class="btn btn-success btn-block mt-3">{{ button_label|default('Ajouter') }}
+            {% else %}
+                <a class ="btn btn-secondary my-2" href="">Bouton d'ajout désactivé</a>
+            {% endif %}
+            </button>
+        {{ form_end(form) }}
     </div>
 
     <div class="d-flex justify-content-around flex-wrap">

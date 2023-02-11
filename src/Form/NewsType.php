@@ -2,10 +2,7 @@
 
 namespace App\Form;
 
-use App\Entity\Picture;
 use App\Entity\News;
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
-use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -21,23 +18,27 @@ class NewsType extends AbstractType
         $builder
             ->add('isHomeEvent', CheckboxType::class, [
                 'label'    => 'Epingler à la page d\'accueil',
+                'label_attr' => [
+                    'class' => 'text-start d-block lh-lg ms-3'
+                    
+                ],
                 'required' => false,
                 'attr' => [
-                    'class' => 'custom-checkbox',
+                    'class' => 'custom-checkbox mt-0'
                 ],
             ])
             ->add('title', TextType::class, [
                 'required' => false,
                 'label' => 'Titre de la publication',
                 'attr' => [
-                    'class' => 'custom-title',
+                    'class' => 'rounded',
                 ],
             ])
             ->add('content', TextareaType::class, [
                 'required' => false,
                 'label' => 'Texte ',                
                 'attr' => [
-                    'class' => 'custom-content',
+                    'class' => 'rounded',
                 ],
             ])
             ->add('publishedAt', DateTimeType::class, [
@@ -46,11 +47,14 @@ class NewsType extends AbstractType
                 'input' => 'datetime_immutable',
                 'data' => new \DateTimeImmutable(),
                 'attr' => [
-                    'class' => 'custom-date',
+                    'class' => 'rounded',
                 ],
             ])
             ->add('pictures', PictureType::class, [
-                'data_class' => null
+                'data_class' => null,
+                'label_attr' => [
+                    'class' => 'd-none'
+                ]
             ])       
         ;
     }

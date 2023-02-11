@@ -51,15 +51,22 @@
         <p>Mail : <strong>{{ card.user.email }}</strong> </p>
     </div>  
     {% endif %}   
-    {% if card.usedAt is not empty  %}
+    {% if is_granted('ROLE_ADMIN') %}
 
-    {% elseif card.usedAt is null and card.limitedDate|date('Y/m/d') > 'now'|date('Y/m/d') %}
-        <form method="post" action="{{ path('app_card_used', {'id': card.id}) }}" onsubmit="return confirm('Vous confirmez bien la venue  du client avec le bon cadeau de reférence #23710{{card.id}} ?');">    <button class="btn btn-warning">Enregistrer le passage du client</button>
-        </form>
+        {% if ccard.usedAt is null and card.limitedDate|date('Y/m/d') > 'now'|date('Y/m/d')  %}
+            <form method="post" action="{{ path('app_card_used', {'id': card.id}) }}" onsubmit="return confirm('Vous confirmez bien la venue du client avec le bon cadeau de reférence #{{card.id}} ?');">    
+                <button class="btn btn-warning">Enregistrer le passage du client</button>
+            </form>
+        {% elseif card.usedAt is null %}
+            <form method="post" action="{{ path('app_card_used', {'id': card.id}) }}" onsubmit="return confirm('Êtes vous sûr de désactiver la carte ou confirmer la venue du client avec le bon cadeau de reférence #{{card.id}} malgrès que la carte soit périmée ?');">    
+                <button class="btn btn-warning">Enregistrer le passage du client ou désactiver la carte</button> 
+            </form>
+        {% endif %}   
     {% else %}
-        <form method="post" action="{{ path('app_card_used', {'id': card.id}) }}" onsubmit="return confirm('Êtes vous sûr de désactiver la carte ou confirmer la venue  du client avec le bon cadeau de reférence #23710{{card.id}} malgrès que la carte soit périmée ?');">    
-        <button class="btn btn-warning">Enregistrer le passage du client ou désactiver la carte</button> 
-    {% endif %}   
+        {% if card.usedAt is null %}
+            <a class ="btn btn-secondary my-2" href="">Bouton de désactivation de la carte</a>
+        {% endif %}  
+    {% endif %}
     </div>  
 </div>
 

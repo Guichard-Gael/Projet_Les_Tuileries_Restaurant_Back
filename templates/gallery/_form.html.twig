@@ -1,4 +1,8 @@
 {{ form_start(form) }}
 {{ form_widget(form) }}
-<button class="btn btn-success mt-3">{{ button_label|default('Ajouter') }}</button> 
+    {% if is_granted('ROLE_ADMIN') %}
+        <button class="btn btn-success mt-3">{{ button_label|default('Ajouter') }}</button> 
+    {% else %}
+        <a class ="btn btn-secondary my-2" href="">Bouton d'ajout désactivé</a>
+    {% endif %}
 {{ form_end(form) }}

@@ -1,4 +1,8 @@
 {{ form_start(form) }}
     {{ form_widget(form) }}
-    <button class="btn btn-sucess popupbutton">{{ button_label|default('Enregistrer les modifications') }}</button>
+    {% if is_granted('ROLE_ADMIN') %}
+        <button class="btn btn-sucess popupbutton">{{ button_label|default('Enregistrer les modifications') }}</button>
+    {% else %}
+        <a class ="btn btn-secondary my-2" href="">Bouton de modification désactivé</a>
+    {% endif %}
 {{ form_end(form) }}

@@ -18,23 +18,32 @@ const searchCard = {
         const referenceElement = document.createElement('td');
         // Create a link element
         const linkReference = searchCard.createLink('#' + reference, cardId);
+        linkReference.classList.add('fw-bold', 'fs-7', 'text-decoration-none');
+        if(status === "expiré"){
+            linkReference.classList.add('text-danger');
+        } else if(status === "active") {
+            linkReference.classList.add('text-success');
+        } else {
+            linkReference.classList.add('text-secondary');
+        }
         // Add the link in the td
         referenceElement.appendChild(linkReference);
         
         const receiverElement = searchCard.createTdElement(receiver);
         const amountElement = searchCard.createTdElement(amount + "€");
         const boughtAtElement = searchCard.createTdElement(boughtAt);
+        boughtAtElement.classList.add('d-none', 'd-sm-block');
     
         const statusElement = document.createElement('td');
         const linkStatus = searchCard.createLink(status, cardId);
         // Add a personalize class for bootstrap css style
-        linkStatus.classList.add('badge', 'rounded-pill');
+        linkStatus.classList.add('fw-bold', 'fs-7', 'text-uppercase', 'text-decoration-none');
         if(status === "expiré"){
-            linkStatus.classList.add('text-bg-danger');
+            linkStatus.classList.add('text-danger');
         } else if(status === "active") {
-            linkStatus.classList.add('text-bg-success');
+            linkStatus.classList.add('text-success');
         } else {
-            linkStatus.classList.add('text-bg-secondary');
+            linkStatus.classList.add('text-secondary');
         }
         statusElement.appendChild(linkStatus)
     

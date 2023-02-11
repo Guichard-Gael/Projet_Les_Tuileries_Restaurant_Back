@@ -18,20 +18,23 @@ class CardType extends AbstractType
         
             ->add('gifter', TextType::class, [
                 'required' => false,
-                'label' => 'De la part de :',
+                'label' => 'De la part de',
                 'attr' => [
-                    'class' => 'custom-title',
+                    'class' => 'rounded',
                 ],
             ])
             ->add('receiver', TextType::class, [
                 'required' => false,
-                'label' => 'A l\'intention de :',
+                'label' => 'A l\'intention de',
                 'attr' => [
-                    'class' => 'custom-title',
+                    'class' => 'rounded',
                 ],
             ])
             ->add('amount', MoneyType::class, [
                 'label' => 'Montant',
+                'attr' => [
+                    'class' => 'rounded-end',
+                ],
             ])
             ->add('boughtAt', DateTimeType::class, [
                 'label' => 'Date d\'achat de la carte cadeau',
@@ -39,7 +42,8 @@ class CardType extends AbstractType
                 'input' => 'datetime_immutable',
                 'data' => new \DateTimeImmutable(),
                 'attr' => [
-                    'class' => 'custom-date',]                
+                    'class' => 'rounded',
+                ],              
             ]);
     }
 
