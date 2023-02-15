@@ -1,5 +1,7 @@
+/*--------------------------
+          General
+--------------------------*/
 body {
-
     background-color: #323232;
     color: antiquewhite;
     text-align: center;
@@ -166,6 +168,6 @@ hr {
     background: black;
 }
 
-.container-img > img {
+.container-img img {
     height: 100%;
 }

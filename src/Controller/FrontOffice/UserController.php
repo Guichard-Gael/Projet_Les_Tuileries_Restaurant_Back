@@ -104,42 +104,6 @@ class UserController extends AbstractController
     }
 
     /**
-     * Create a new user
-     * 
-     * @Route("/api/create-admin", name="app_user_create_admin", methods={"POST"})
-     */
-    public function fakeAdmin(UserPasswordHasherInterface $passwordHasher, ManagerRegistry $managerRegistry): JsonResponse
-    {
-        $admin = new User();
-        $admin->setEmail("test@test.com")
-              ->setFirstname("test")
-              ->setLastname("test")
-              ->setPhone("02000000")
-              ->setPassword("test")
-              ->setRoles(["ROLE_TEST"]);
-
-        $em = $managerRegistry->getManager();
-        // Hash the password
-        $hashedPassword = $passwordHasher->hashPassword(
-            $admin,
-            $admin->getPassword()
-        );
-        // Save the hashed password
-        $admin->setPassword($hashedPassword);
-        $em->persist($admin);
-        $em->flush();
-
-        return $this->json([
-            'message' => "Utilisateur créé",
-            $admin
-        ],
-        Response::HTTP_CREATED,
-        [],
-        ['groups' => 'users_get_item']
-    );
-    }
-
-    /**
      * Get the content of the client space page
      * 
      * @Route("/api/client-space", name="app_user_client_space", methods={"GET"})

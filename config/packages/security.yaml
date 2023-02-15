@@ -31,8 +31,10 @@ security:
             form_login:
                 login_path: app_login_admin
                 check_path: app_login_admin
+                default_target_path: app_home_admin
             logout:
                 path: app_logout_admin
+                target: app_login_admin
 
             # activate different ways to authenticate
             # https://symfony.com/doc/current/security.html#the-firewall

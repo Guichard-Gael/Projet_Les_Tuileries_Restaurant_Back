@@ -29,12 +29,12 @@
                             <p class="text-justify">{{ news.content }}</p>
                             <hr>  
                             {% if news.isHomeEvent == 1 %}
-                                <a href="{{ path('app_event_edit', {'id': news.id}) }}">
+                                <div>
                                     <i class="bi bi-star-fill stars"></i>
-                                </a>  
+                                </div>  
                             {% endif %}
                     
-                            <a class="btn btn-warning" href="{{ path('app_event_edit', {'id': news.id}) }}">Modifier</a>
+                            <a class="btn btn-warning my-2" href="{{ path('app_event_edit', {'id': news.id}) }}">Modifier</a>
 
                             {% if is_granted('ROLE_ADMIN') %}
                                 {{ include('event/_delete_form.html.twig') }}

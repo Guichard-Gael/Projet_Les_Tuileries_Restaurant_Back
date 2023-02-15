@@ -53,7 +53,7 @@
     {% endif %}   
     {% if is_granted('ROLE_ADMIN') %}
 
-        {% if ccard.usedAt is null and card.limitedDate|date('Y/m/d') > 'now'|date('Y/m/d')  %}
+        {% if card.usedAt is null and card.limitedDate|date('Y/m/d') > 'now'|date('Y/m/d')  %}
             <form method="post" action="{{ path('app_card_used', {'id': card.id}) }}" onsubmit="return confirm('Vous confirmez bien la venue du client avec le bon cadeau de reférence #{{card.id}} ?');">    
                 <button class="btn btn-warning">Enregistrer le passage du client</button>
             </form>
